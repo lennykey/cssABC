@@ -1,0 +1,1 @@
+Reads the actual view and writes result to the file sortedCSS.css
