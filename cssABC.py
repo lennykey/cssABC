@@ -25,8 +25,25 @@ def main(css):
     # f.close()
 
     sortedGroups = sortCSS(groups) 
-    writeSortedCSSToFile("sortedCSS.css", sortedGroups)
+    return writeSortedCSSToString(sortedGroups)
+    # writeSortedCSSToFile("sortedCSS.css", sortedGroups)
     # logging.warning(sortedCSS)
+
+def writeSortedCSSToString(groups):
+    sortedCss = []
+
+    for group in groups:
+        for tagname, attributes in group.items():
+            # logging.warning(tagname)
+            # sepline.warning(value)
+            sortedCss.append(os.linesep+tagname+"{"+os.linesep)
+            for attribute in attributes:
+                    sortedCss.append("    "+str(attribute)+os.linesep)
+        sortedCss.append("}")
+
+    # logging.warning(sortedCss)
+    return ''.join(sortedCss).decode("utf-8")
+
 
 
 def writeSortedCSSToFile(filename, groups):
