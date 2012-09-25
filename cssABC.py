@@ -83,11 +83,12 @@ def sortCSS(css):
         cleanedEntry = commentPattern.sub("", entry.replace(taglong, ""));
         # logging.warning(cleanedEntry)
         # attributes = [ a.strip() for a in re.findall(r"(?<!/).*?;", entry) ]
-        attributes = [ a.strip() for a in re.findall(r"[^ \t]+?:[ \t]*?[^ \t]+?[;|}]", cleanedEntry) ]
+        attributes = [ a.strip() for a in re.findall(r"[^ \t:]+?:[^;|}]+?[;|}]+", cleanedEntry) ]
         # logging.warning("Attribute: " + str(attributes))
         for attribute in attributes:
             # logging.warn(attribute)
-            response.append( re.sub(r"\s", "", attribute.replace(";","").replace("}", "")+";") )
+            # response.append( re.sub(r"\s", "", attribute.replace(";","").replace("}", "")+";") )
+            response.append( attribute.replace("\n", "").replace("\r", "").replace(";","").replace("}", "")+";") 
             # print "Group", i, ":", attribute.group(i)
         
         # logging.warning(response)
