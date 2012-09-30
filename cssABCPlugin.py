@@ -3,7 +3,7 @@ import cssABC
 
 class CssabcCommand(sublime_plugin.TextCommand):
     def run(self, edit):
-        print("CSSABC")
+        print("CSSABC Plugin")
         fullViewRegion = sublime.Region( 0, self.view.size() )
         fullContent = self.view.substr(fullViewRegion)
         sortedCSSContent = cssABC.main(fullContent)
